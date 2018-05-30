@@ -158,9 +158,78 @@ we can see that our pvalue is extremely small at 0.006 this is because the drug 
 
 # abacavirinol
 
+```{r}
+abacall <- xtabs(~infected+group,data=abacavirinol)
+barchartGC(abacall,type="percent")
+```
+
+we can see in this barchart that the drug prevented a bit of people from contracting aids, but it is not an effective drug when looking at both genders together.
+
+```{r}
+rowPerc(abacall)
+colPerc(abacall)
+```
+
+we can see that the numbers are almost exact when it comes to comparing those who took the drug and those who didnt.
+
+```{r}
+chisqtestGC(abacall,graph=TRUE)
+```
+ the pvalue is .89 meaning that both datas are very similar. this tells us that the drug did little difference. uneffectine in other words.
+
 We will subset the data by sex to see if the drug is sex specific.
 
+##Male
 
+```{r}
+abacmale<- filter(abacavirinol,sex=="M")
+tababacmale <- xtabs(~infected+group,data=abacmale)
+barchartGC(tababacmale,type="percent")
+```
+
+it looks like similar to the atriplavast test, this drug increases the chances of getting aids except this time for males.
+
+```{r}
+rowPerc(tababacmale)
+colPerc(tababacmale)
+```
+
+as we can see, just like the atriplavast, the number of males who took the drug and got aids increased by 2%
+
+```{r}
+chisqtestGC(tababacmale,graph=TRUE)
+```
+
+we were given a pvalue of .09 meaning that there was a big difference between those who didnt take the drug vs those who did. although the results were negative, the drug did have an effect.
+
+##Females
+
+```{r}
+abacfemale <- filter(abacavirinol,sex=="F")
+tababacfemale <- xtabs(~infected+group,data=abacfemale)
+barchartGC(tababacfemale,type="percent")
+```
+
+it looks like opposite of the male barchart, this drug has positive results on females. it seem that less females got aids when taking the drug.
+
+```{r}
+rowPerc(tababacfemale)
+colPerc(tababacfemale)
+```
+
+although its not as effective as it should idealy be, it is the most effective on Females of the three drugs we have looked at in this study. there were 2% less females with aids
+
+```{r}
+chisqtestGC(tababacfemale,graph=TRUE)
+```
+
+the pvalue of 0.02 tells us that the drug made a big change. the big change being that drug does actually prevent aids in females.
+
+# Conclusion
+
+What we have learned is that that different drugs work better or worse depending on which gender it is used on. the Genvoyabub had an insignificant difference on either gender making it petty much useless. the Atriplavast had a good effect on males reducing their chance of contracting aids, but it actually increased the females chance of getting aids. Abacavirinol had a bad effect on males increasing their chance of getting aids, but it worked well on females. so males should take Atriplavast, and Females should take Abacavirinol.
+
+  
 
 
 
