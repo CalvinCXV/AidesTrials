@@ -25,10 +25,72 @@ We will subset the data by sex to see if the drug is sex specific.
 
 
 # Atriplavast
+```{r}
+atriall <- xtabs(~infected+group,data=Atriplavast)
+barchartGC(atriall,type="percent")
+```
+we can see in the barchart that there is actually a pretty significant difference in the results of those who took the drug vs those who didnt.
+
+```{r}
+rowPerc(atriall)
+colPerc(atriall)
+```
+
+as you can see in the coloumn percent chart, the drug prevented a little over one percent of the people in contracting aids.
+
+```{r}
+chisqtestGC(atriall,graph=TRUE)
+```
+
+The p-value of 0.06 confirms that there is a significant difference and the drug definitely works because the lower the pvalue, the more difference in the data.
 
 We will subset the data by sex to see if the drug is sex specific.
 
+##Males
 
+```{r}
+atrimale <- filter(Atriplavast, sex=="M")
+tabatrimale <- xtabs(~infected+group,data=atrimale)
+barchartGC(tabatrimale,type="percent")
+```
+
+this male barchart seems to have a bigger difference than the barchart with both genders meaning that the drug must be more effective on males.
+
+```{r}
+rowPerc(tabatrimale)
+colPerc(tabatrimale)
+```
+
+as expected, the drug pervented a whole 5% of males from contracting aids. the Drug did have a large effect on males.
+
+```{r}
+chisqtestGC(tabatrimale,graph=TRUE)
+```
+
+the Pvalue given to us was 0 meaning that the results from those who took the placebo and those who took the drug had no similarities therefore, it is very obvious that the drug did have a big effect on males.
+
+##Females
+
+```{r}
+atrifemale <- filter(Atriplavast, sex=="F")
+tabatrifemale <- xtabs(~infected+group,data=atrifemale)
+barchartGC(tabatrifemale,type="percent")
+```
+
+From what the barchart shows us, it looks like the drug actually increased the chances of females getting aids.
+
+```{r}
+rowPerc(tabatrifemale)
+colPerc(tabatrifemale)
+```
+
+this chart gives us a clearer understanding on what the differences were, and it turns out that the number of females with aids increased by 2% when they took the drug.
+
+```{r}
+chisqtestGC(tabatrifemale,graph=TRUE)
+```
+
+we can see that our pvalue is extremely small at 0.006 this is because the drug worked in a negative way. instead of preventing aids, it increased the chances of females getting aids. it worked well on Males, but Females should definitely stay away from this one.
 
 # abacavirinol
 
