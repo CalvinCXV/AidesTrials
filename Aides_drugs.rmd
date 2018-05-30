@@ -21,8 +21,6 @@ Three new preventative aides drugs were tested in clinical trials in 2015. The t
 
 # Genvoyabub
 
-We will subset the data by sex to see if the drug is sex specific.
-
 ```{r}
 tabinfgroall<- xtabs(~infected+group,data=Genvoyabub)
 barchartGC(tabinfgroall,type="percent")
@@ -42,6 +40,8 @@ chisqtestGC(tabinfgroall,graph=TRUE)
 ```
 
 the Pvalue of 0.57 means that you have a 57% chance of ending up with the same results. that is a very high pvalue and signifies that the study and results are fairly consistent.
+
+We will subset the data by sex to see if the drug is sex specific
 
 ##Males
 ```{r}
@@ -154,7 +154,7 @@ this chart gives us a clearer understanding on what the differences were, and it
 chisqtestGC(tabatrifemale,graph=TRUE)
 ```
 
-we can see that our pvalue is extremely small at 0.006 this is because the drug worked in a negative way. instead of preventing aids, it increased the chances of females getting aids. it worked well on Males, but Females should definitely stay away from this one.atripla
+we can see that our pvalue is extremely small at 0.006 this is because the drug worked in a negative way. instead of preventing aids, it increased the chances of females getting aids. it worked well on Males, but Females should definitely stay away from this one.
 
 # abacavirinol
 
